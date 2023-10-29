@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GameUI extends JFrame {
     BorderLayout layout = new BorderLayout();
@@ -11,17 +12,19 @@ public class GameUI extends JFrame {
 
     JButton newGameButton = new JButton("New Game");
 
-    JButton numberButton = new JButton();
+    ArrayList<JButton> buttonList = new ArrayList<>();
 
     GameUI() {
         northPanel.add(gameStatusLabel);
         northPanel.add(newGameButton);
 
         southPanel.setLayout(new GridLayout(4,4));
+
         for (int i = 1; i <= 15; i++) {
-            numberButton = new JButton(Integer.toString(i));
-            numberButton.setPreferredSize(new Dimension(70, 70));
+            JButton numberButton = new JButton(String.valueOf(i));
+            buttonList.add(numberButton);
             southPanel.add(numberButton);
+            numberButton.setPreferredSize(new Dimension(60, 60));
         }
 
         platform.add(northPanel, BorderLayout.NORTH);
