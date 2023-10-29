@@ -1,4 +1,10 @@
 public class FifteenGame {
-    //test
-    //test2
+
+    FifteenGame() {
+        GameUI gu = new GameUI();
+    }
+
+    public static void main(String[] args) {
+        FifteenGame fg = new FifteenGame();
+    }
 }
