@@ -15,26 +15,32 @@ public class GameUI extends JFrame {
     ArrayList<JButton> buttonList = new ArrayList<>();
 
     JButton numberButton = new JButton();
-    JButton emptySpaceButton = new JButton("Empty");
+    JButton emptySpaceButton = new JButton();
 
     GameUI() {
         northPanel.add(gameStatusLabel);
+        gameStatusLabel.setForeground(Color.WHITE);
+        gameStatusLabel.setFont(new Font("Verdana", Font.BOLD, 12));
+
         northPanel.add(newGameButton);
+        newGameButton.setFont(new Font("Verdana", Font.BOLD, 12));
+        newGameButton.setBackground(Color.WHITE);
         northPanel.setBorder(new EmptyBorder(10,0,10,0));
         northPanel.setBackground(Color.RED);
-
-        gameStatusLabel.setForeground(Color.WHITE);
 
         southPanel.setLayout(new GridLayout(4,4));
 
         //lägger in siffrorna i ArrayList med siffror från 1-15
         for (int i = 1; i <= 15; i++) {
             numberButton = new JButton(String.valueOf(i));
+            numberButton.setBackground(Color.WHITE);
+            numberButton.setFont(new Font("Verdana", Font.BOLD, 18));
             buttonList.add(numberButton);
         }
 
-        emptySpaceButton.setBackground(Color.WHITE);
         buttonList.add(emptySpaceButton);
+        emptySpaceButton.setBackground(Color.RED);
+        emptySpaceButton.setBorder(null);
 
         //slumpar siffrorna så det hamnar i slumpmässig ordning
         Collections.shuffle(buttonList);
@@ -42,15 +48,16 @@ public class GameUI extends JFrame {
         //adderar listan i GUI med fast storlek på knapparna
         for (JButton button : buttonList) {
             southPanel.add(button);
-            numberButton.setPreferredSize(new Dimension(60, 60));
+            button.setPreferredSize(new Dimension(60, 60));
         }
 
         platform.add(northPanel, BorderLayout.NORTH);
         platform.add(southPanel, BorderLayout.SOUTH);
 
-        add(platform);
         platform.setBorder(new EmptyBorder(0, 15, 15, 15));
         platform.setBackground(Color.RED);
+
+        add(platform);
 
         pack();
         setLocationRelativeTo(null);
