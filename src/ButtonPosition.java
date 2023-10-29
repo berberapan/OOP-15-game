@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class EmptySpacePosition {
+public class ButtonPosition {
 
     public int emptyIndex (JPanel buttonPanel) {
         int emptyButtonIndex = -1;

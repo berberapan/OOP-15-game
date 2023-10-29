@@ -32,14 +32,14 @@ public class GameUI extends JFrame {
         int hGap = 2;
         int vGap = 2;
 
-        int rowsAndColumns = 4;
+        int squareValue = 4;
 
-        southPanel.setLayout(new GridLayout(rowsAndColumns,rowsAndColumns,hGap,vGap));
+        southPanel.setLayout(new GridLayout(squareValue,squareValue,hGap,vGap));
         southPanel.setBackground(Color.red);
 
 
         //lägger in siffrorna i ArrayList med siffror från 1-15
-        for (int i = 1; i <= (rowsAndColumns*rowsAndColumns)-1; i++) {
+        for (int i = 1; i <= (squareValue*squareValue)-1; i++) {
             numberButton = new JButton(String.valueOf(i));
             numberButton.setBackground(Color.WHITE);
             numberButton.setFont(new Font("Verdana", Font.BOLD, 18));
@@ -63,7 +63,7 @@ public class GameUI extends JFrame {
             button.setPreferredSize(new Dimension(60, 60));
             button.setFocusPainted(false);
         }
-        JButton emptyButton = (JButton) southPanel.getComponent(new EmptySpacePosition().emptyIndex(southPanel));
+        JButton emptyButton = (JButton) southPanel.getComponent(new ButtonPosition().emptyIndex(southPanel));
         SwapButtons swapper = new SwapButtons(emptyButton);
 
 
@@ -87,6 +87,6 @@ public class GameUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //Test av metod. Att ta bort senare
-        System.out.println(new EmptySpacePosition().emptyIndex(southPanel));
+        System.out.println(new ButtonPosition().emptyIndex(southPanel));
     }
 }
