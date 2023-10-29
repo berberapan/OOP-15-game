@@ -29,11 +29,17 @@ public class GameUI extends JFrame {
         northPanel.setBorder(new EmptyBorder(10,0,10,0));
         northPanel.setBackground(Color.RED);
 
-        southPanel.setLayout(new GridLayout(4,4));
+        int hGap = 2;
+        int vGap = 2;
+
+        int rowsAndColumns = 4;
+
+        southPanel.setLayout(new GridLayout(rowsAndColumns,rowsAndColumns,hGap,vGap));
         southPanel.setBackground(Color.red);
 
+
         //lägger in siffrorna i ArrayList med siffror från 1-15
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 1; i <= (rowsAndColumns*rowsAndColumns)-1; i++) {
             numberButton = new JButton(String.valueOf(i));
             numberButton.setBackground(Color.WHITE);
             numberButton.setFont(new Font("Verdana", Font.BOLD, 18));
