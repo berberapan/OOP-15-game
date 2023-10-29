@@ -56,6 +56,7 @@ public class GameUI extends JFrame {
         //slumpar siffrorna så det hamnar i slumpmässig ordning
         Collections.shuffle(buttonList);
 
+        ButtonPosition index = new ButtonPosition();
 
         //adderar listan i GUI med fast storlek på knapparna
         for (JButton button : buttonList) {
@@ -63,13 +64,18 @@ public class GameUI extends JFrame {
             button.setPreferredSize(new Dimension(60, 60));
             button.setFocusPainted(false);
         }
-        JButton emptyButton = (JButton) southPanel.getComponent(new ButtonPosition().emptyIndex(southPanel));
+        JButton emptyButton = (JButton) southPanel.getComponent(index.emptyIndex(southPanel));
         SwapButtons swapper = new SwapButtons(emptyButton);
 
 
         for (Component component : southPanel.getComponents()) {
-            JButton knapp = (JButton) component;
-            knapp.addActionListener(e -> swapper.swap((JButton) e.getSource()));
+            JButton buttonAction = (JButton) component;
+            buttonAction.addActionListener(e -> { if (new EligibilityCheck().isButtonEligible
+                    (index.emptyIndex(southPanel),
+                            index.buttonIndex(southPanel
+                                    ,(JButton) e.getSource())
+                            , squareValue )) {
+                swapper.swap((JButton) e.getSource());}});
         }
 
 
