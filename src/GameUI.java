@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,10 +15,15 @@ public class GameUI extends JFrame {
     ArrayList<JButton> buttonList = new ArrayList<>();
 
     JButton numberButton = new JButton();
+    JButton emptySpaceButton = new JButton("Empty");
 
     GameUI() {
         northPanel.add(gameStatusLabel);
         northPanel.add(newGameButton);
+        northPanel.setBorder(new EmptyBorder(10,0,10,0));
+        northPanel.setBackground(Color.RED);
+
+        gameStatusLabel.setForeground(Color.WHITE);
 
         southPanel.setLayout(new GridLayout(4,4));
 
@@ -26,6 +32,9 @@ public class GameUI extends JFrame {
             numberButton = new JButton(String.valueOf(i));
             buttonList.add(numberButton);
         }
+
+        emptySpaceButton.setBackground(Color.WHITE);
+        buttonList.add(emptySpaceButton);
 
         //slumpar siffrorna så det hamnar i slumpmässig ordning
         Collections.shuffle(buttonList);
@@ -40,6 +49,8 @@ public class GameUI extends JFrame {
         platform.add(southPanel, BorderLayout.SOUTH);
 
         add(platform);
+        platform.setBorder(new EmptyBorder(0, 15, 15, 15));
+        platform.setBackground(Color.RED);
 
         pack();
         setLocationRelativeTo(null);
