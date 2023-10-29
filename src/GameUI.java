@@ -30,6 +30,7 @@ public class GameUI extends JFrame {
         northPanel.setBackground(Color.RED);
 
         southPanel.setLayout(new GridLayout(4,4));
+        southPanel.setBackground(Color.red);
 
         //lägger in siffrorna i ArrayList med siffror från 1-15
         for (int i = 1; i <= 15; i++) {
@@ -40,8 +41,9 @@ public class GameUI extends JFrame {
         }
 
         buttonList.add(emptySpaceButton);
-        emptySpaceButton.setBackground(Color.RED);
+        emptySpaceButton.setVisible(false);
         emptySpaceButton.setBorder(null);
+        emptySpaceButton.setText(" ");
 
         //slumpar siffrorna så det hamnar i slumpmässig ordning
         Collections.shuffle(buttonList);
@@ -65,5 +67,9 @@ public class GameUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        //Test av metod. Att ta bort senare
+        EmptySpacePosition test = new EmptySpacePosition();
+        System.out.println(test.emptyIndex(southPanel));
     }
 }
