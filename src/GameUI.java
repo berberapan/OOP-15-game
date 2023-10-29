@@ -49,6 +49,7 @@ public class GameUI extends JFrame {
         for (JButton button : buttonList) {
             southPanel.add(button);
             button.setPreferredSize(new Dimension(60, 60));
+            button.setFocusPainted(false);
         }
 
         platform.add(northPanel, BorderLayout.NORTH);
