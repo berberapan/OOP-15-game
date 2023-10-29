@@ -25,6 +25,7 @@ public class GameUI extends JFrame {
         northPanel.add(newGameButton);
         newGameButton.setFont(new Font("Verdana", Font.BOLD, 12));
         newGameButton.setBackground(Color.WHITE);
+        newGameButton.setFocusPainted(false);
         northPanel.setBorder(new EmptyBorder(10,0,10,0));
         northPanel.setBackground(Color.RED);
 
