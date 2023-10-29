@@ -44,9 +44,12 @@ public class GameUI extends JFrame {
         emptySpaceButton.setVisible(false);
         emptySpaceButton.setBorder(null);
         emptySpaceButton.setText(" ");
+        emptySpaceButton.setBackground(Color.WHITE);
+        emptySpaceButton.setFont(new Font("Verdana", Font.BOLD, 18));
 
         //slumpar siffrorna så det hamnar i slumpmässig ordning
         Collections.shuffle(buttonList);
+
 
         //adderar listan i GUI med fast storlek på knapparna
         for (JButton button : buttonList) {
@@ -54,6 +57,15 @@ public class GameUI extends JFrame {
             button.setPreferredSize(new Dimension(60, 60));
             button.setFocusPainted(false);
         }
+        JButton emptyButton = (JButton) southPanel.getComponent(new EmptySpacePosition().emptyIndex(southPanel));
+        SwapButtons swapper = new SwapButtons(emptyButton);
+
+
+        for (Component component : southPanel.getComponents()) {
+            JButton knapp = (JButton) component;
+            knapp.addActionListener(e -> swapper.swap((JButton) e.getSource()));
+        }
+
 
         platform.add(northPanel, BorderLayout.NORTH);
         platform.add(southPanel, BorderLayout.SOUTH);
@@ -69,7 +81,6 @@ public class GameUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //Test av metod. Att ta bort senare
-        EmptySpacePosition test = new EmptySpacePosition();
-        System.out.println(test.emptyIndex(southPanel));
+        System.out.println(new EmptySpacePosition().emptyIndex(southPanel));
     }
 }

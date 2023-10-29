@@ -2,10 +2,18 @@ import javax.swing.*;
 
 public class SwapButtons {
 
-    public void swap (JButton emptyButton, JButton clickedButton) {
-        emptyButton.setText(clickedButton.getText());
+    private JButton emptyButton;
+    public SwapButtons(JButton emptyButton) {
+        this.emptyButton = emptyButton;
+    }
+
+    public void swap (JButton clickedButton) {
+        this.emptyButton.setText(clickedButton.getText());
         clickedButton.setText(" ");
-        emptyButton.setVisible(true);
+        this.emptyButton.setVisible(true);
         clickedButton.setVisible(false);
+
+        this.emptyButton = clickedButton;
+
     }
 }
