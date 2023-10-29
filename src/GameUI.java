@@ -18,16 +18,18 @@ public class GameUI extends JFrame {
     JButton emptySpaceButton = new JButton();
 
     GameUI() {
-        northPanel.add(gameStatusLabel);
+        //speltitel
         gameStatusLabel.setForeground(Color.WHITE);
         gameStatusLabel.setFont(new Font("Verdana", Font.BOLD, 12));
+        northPanel.add(gameStatusLabel);
 
-        northPanel.add(newGameButton);
+        //nytt spel-knapp
+        northPanel.setBorder(new EmptyBorder(10,0,10,0));
+        northPanel.setBackground(Color.RED);
         newGameButton.setFont(new Font("Verdana", Font.BOLD, 12));
         newGameButton.setBackground(Color.WHITE);
         newGameButton.setFocusPainted(false);
-        northPanel.setBorder(new EmptyBorder(10,0,10,0));
-        northPanel.setBackground(Color.RED);
+        northPanel.add(newGameButton);
 
         southPanel.setLayout(new GridLayout(4,4));
 
@@ -55,7 +57,6 @@ public class GameUI extends JFrame {
 
         platform.add(northPanel, BorderLayout.NORTH);
         platform.add(southPanel, BorderLayout.SOUTH);
-
         platform.setBorder(new EmptyBorder(0, 15, 15, 15));
         platform.setBackground(Color.RED);
 
