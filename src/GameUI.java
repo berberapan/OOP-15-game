@@ -37,7 +37,7 @@ public class GameUI extends JFrame{
         int hGap = 2;
         int vGap = 2;
 
-        int squareValue = 3;
+        int squareValue = 4;
 
         southPanel.setLayout(new GridLayout(squareValue,squareValue,hGap,vGap));
         southPanel.setBackground(Color.red);
@@ -76,15 +76,11 @@ public class GameUI extends JFrame{
 
         for (Component component : southPanel.getComponents()) {
             JButton buttonAction = (JButton) component;
-            buttonAction.addActionListener(e -> { if (new EligibilityCheck().isButtonEligible
-                    (index.emptyIndex(southPanel),
-                            index.buttonIndex(southPanel
-                                    ,(JButton) e.getSource())
-                            , squareValue )) {
-                swapper.swap((JButton) e.getSource()); if (win.gameWon(southPanel)){
-                win.winMessage();}
-            }});
-
+            buttonAction.addActionListener(e -> { if
+            (new EligibilityCheck().isButtonEligible(index.emptyIndex(southPanel),
+                            index.buttonIndex(southPanel,(JButton) e.getSource()), squareValue ))
+            {swapper.swap((JButton) e.getSource()); if (win.isGameWon(southPanel))
+            {win.displayWinMessage();}}});
         }
 
 

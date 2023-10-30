@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class WinningCondition {
 
-    public boolean gameWon(JPanel panel) {
+    public boolean isGameWon(JPanel panel) {
         for (int i = 0; i <= panel.getComponentCount() - 2; i++) {
             JButton button = (JButton) panel.getComponent(i);
             if (!button.getText().equals(String.format("%d", i+1))) {
@@ -11,11 +11,9 @@ public class WinningCondition {
             };
         } return true;
     }
-
-    public void winMessage() {
+    public void displayWinMessage() {
         JLabel label = new JLabel("\nYou won!\n", SwingConstants.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
         JOptionPane.showMessageDialog(null, label, " ", JOptionPane.PLAIN_MESSAGE);
-
     }
 }
