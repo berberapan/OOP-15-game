@@ -54,9 +54,6 @@ public class GameUI extends JFrame{
         emptySpaceButton.setBackground(Color.WHITE);
         emptySpaceButton.setFont(new Font("Verdana", Font.BOLD, 18));
 
-        //slumpar siffrorna så det hamnar i slumpmässig ordning
-//        Collections.shuffle(buttonList);
-
         ButtonPosition index = new ButtonPosition();
 
         //adderar listan i GUI med fast storlek på knapparna
