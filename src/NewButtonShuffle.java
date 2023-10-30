@@ -51,7 +51,5 @@ public class NewButtonShuffle extends JFrame implements ActionListener {
 
         revalidate();
         repaint();
-//        southPanel.revalidate();
-//        southPanel.repaint();
     }
 }
