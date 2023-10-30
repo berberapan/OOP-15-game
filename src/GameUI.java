@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class GameUI extends JFrame{
     BorderLayout layout = new BorderLayout();

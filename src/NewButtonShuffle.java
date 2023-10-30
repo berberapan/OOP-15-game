@@ -10,7 +10,8 @@ public class NewButtonShuffle extends JFrame implements ActionListener {
     ArrayList<JButton> buttonList = new ArrayList<>();
     JButton numberButton = new JButton();
     JButton emptySpaceButton = new JButton();
-    JLabel gameStatusLabel = new JLabel("Status: Game on");
+    JLabel gameStatusLabel;
+    String statusGameOn = "Status: Game on";
 
     public NewButtonShuffle(JPanel southPanel, JLabel gameStatusLabel) {
         this.southPanel = southPanel;
@@ -46,7 +47,7 @@ public class NewButtonShuffle extends JFrame implements ActionListener {
             button.setFocusPainted(false);
         }
 
-        gameStatusLabel.setText("Status: Game on");
+        gameStatusLabel.setText(statusGameOn);
 
         revalidate();
         repaint();
