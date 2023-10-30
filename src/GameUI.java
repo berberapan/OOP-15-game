@@ -25,7 +25,7 @@ public class GameUI extends JFrame{
         gameStatusLabel.setFont(new Font("Verdana", Font.BOLD, 12));
         northPanel.add(gameStatusLabel);
 
-        //ny spel-knapp
+        //new game-knapp
         northPanel.setBorder(new EmptyBorder(10,0,10,0));
         northPanel.setBackground(Color.RED);
         newGameButton.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -55,12 +55,9 @@ public class GameUI extends JFrame{
         emptySpaceButton.setBackground(Color.WHITE);
         emptySpaceButton.setFont(new Font("Verdana", Font.BOLD, 18));
 
-        //slumpar siffrorna så det hamnar i slumpmässig ordning
-        Collections.shuffle(buttonList);
-
         ButtonPosition index = new ButtonPosition();
 
-        //adderar listan i GUI med fast storlek på knapparna
+        //adderar listan i GUI
         for (JButton button : buttonList) {
             southPanel.add(button);
             button.setPreferredSize(new Dimension(60, 60));
