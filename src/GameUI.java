@@ -34,12 +34,9 @@ public class GameUI extends JFrame{
 
         northPanel.add(newGameButton);
 
-        int hGap = 2;
-        int vGap = 2;
-
         int squareValue = 4;
 
-        southPanel.setLayout(new GridLayout(squareValue,squareValue,hGap,vGap));
+        southPanel.setLayout(new GridLayout(squareValue,squareValue));
         southPanel.setBackground(Color.red);
 
 
