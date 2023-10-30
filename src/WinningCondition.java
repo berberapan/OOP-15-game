@@ -8,7 +8,7 @@ public class WinningCondition {
             JButton button = (JButton) panel.getComponent(i);
             if (!button.getText().equals(String.format("%d", i+1))) {
                 return false;
-            };
+            }
         } return true;
     }
     public void displayWinMessage() {
