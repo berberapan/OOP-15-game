@@ -10,7 +10,7 @@ public class EligibilityCheck {
             return true;
         } else if ((emptyIndex % squareValue == 0) && (aboveBelow == squareValue || toRight == 1)) {
             return true;
-        } else return (emptyIndex+1 % squareValue != 0) && (emptyIndex % squareValue != 0)
+        } else return ((emptyIndex+1 % squareValue != 0) && (emptyIndex % squareValue != 0))
                 && (aboveBelow == squareValue || toLeft == 1 || toRight == 1);
     }
 }
