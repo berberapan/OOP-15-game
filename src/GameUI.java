@@ -9,7 +9,7 @@ public class GameUI extends JFrame{
     JPanel platform = new JPanel(layout);
     JPanel northPanel = new JPanel();
     JPanel southPanel = new JPanel();
-    JLabel gameStatusLabel = new JLabel("Game Status: Game on");
+    JLabel gameStatusLabel = new JLabel("Welcome");
     JButton newGameButton = new JButton("New Game");
 
     ArrayList<JButton> buttonList = new ArrayList<>();
@@ -17,22 +17,20 @@ public class GameUI extends JFrame{
     JButton numberButton = new JButton();
     JButton emptySpaceButton = new JButton();
 
-    NewButtonShuffle nbs = new NewButtonShuffle(southPanel);
+    NewButtonShuffle nbs = new NewButtonShuffle(southPanel, gameStatusLabel);
 
     GameUI() {
-        //speltitel
+
         gameStatusLabel.setForeground(Color.WHITE);
         gameStatusLabel.setFont(new Font("Verdana", Font.BOLD, 12));
         northPanel.add(gameStatusLabel);
 
-        //nytt spel-knapp
+        //ny spel-knapp
         northPanel.setBorder(new EmptyBorder(10,0,10,0));
         northPanel.setBackground(Color.RED);
         newGameButton.setFont(new Font("Verdana", Font.BOLD, 12));
         newGameButton.setBackground(Color.WHITE);
         newGameButton.setFocusPainted(false);
-
-        newGameButton.addActionListener(nbs);
 
         northPanel.add(newGameButton);
 
@@ -50,9 +48,9 @@ public class GameUI extends JFrame{
         emptySpaceButton.setBackground(Color.RED);
         emptySpaceButton.setBorder(null);
 
-        //slumpar siffrorna så det hamnar i slumpmässig ordning
-        Collections.shuffle(buttonList);
-
+//        //slumpar siffrorna så det hamnar i slumpmässig ordning
+//        Collections.shuffle(buttonList);
+//
         //adderar listan i GUI med fast storlek på knapparna
         for (JButton button : buttonList) {
             southPanel.add(button);
@@ -64,6 +62,9 @@ public class GameUI extends JFrame{
         platform.add(southPanel, BorderLayout.SOUTH);
         platform.setBorder(new EmptyBorder(0, 15, 15, 15));
         platform.setBackground(Color.RED);
+
+        //startar spelet genom att shuffle
+        newGameButton.addActionListener(nbs);
 
         add(platform);
 
