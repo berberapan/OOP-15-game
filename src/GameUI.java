@@ -34,12 +34,9 @@ public class GameUI extends JFrame{
 
         northPanel.add(newGameButton);
 
-        int hGap = 2;
-        int vGap = 2;
-
         int squareValue = 4;
 
-        southPanel.setLayout(new GridLayout(squareValue,squareValue,hGap,vGap));
+        southPanel.setLayout(new GridLayout(squareValue,squareValue));
         southPanel.setBackground(Color.red);
 
 
@@ -59,7 +56,7 @@ public class GameUI extends JFrame{
         emptySpaceButton.setFont(new Font("Verdana", Font.BOLD, 18));
 
         //slumpar siffrorna så det hamnar i slumpmässig ordning
-        Collections.shuffle(buttonList);
+//        Collections.shuffle(buttonList);
 
         ButtonPosition index = new ButtonPosition();
 
