@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class NewButtonShuffle extends JFrame implements ActionListener {
-    JPanel southPanel = new JPanel();
+    JPanel southPanel;
     ArrayList<JButton> buttonList = new ArrayList<>();
     JButton numberButton = new JButton();
     JButton emptySpaceButton = new JButton();
