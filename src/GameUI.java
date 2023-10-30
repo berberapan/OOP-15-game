@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class GameUI extends JFrame implements ActionListener {
+public class GameUI extends JFrame{
     BorderLayout layout = new BorderLayout();
     JPanel platform = new JPanel(layout);
     JPanel northPanel = new JPanel();
@@ -18,6 +18,8 @@ public class GameUI extends JFrame implements ActionListener {
 
     JButton numberButton = new JButton();
     JButton emptySpaceButton = new JButton();
+
+    NewButtonShuffle nbs = new NewButtonShuffle(southPanel);
 
     GameUI() {
         //speltitel
@@ -32,7 +34,7 @@ public class GameUI extends JFrame implements ActionListener {
         newGameButton.setBackground(Color.WHITE);
         newGameButton.setFocusPainted(false);
 
-        newGameButton.addActionListener(this);
+        newGameButton.addActionListener(nbs);
 
         northPanel.add(newGameButton);
 
@@ -71,40 +73,5 @@ public class GameUI extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        southPanel.removeAll();
-        southPanel.revalidate();
-        southPanel.repaint();
-
-        buttonList.clear();
-
-        southPanel.setLayout(new GridLayout(4,4));
-
-        for (int i = 1; i <= 15; i++) {
-            numberButton = new JButton(String.valueOf(i));
-            numberButton.setBackground(Color.WHITE);
-            numberButton.setFont(new Font("Verdana", Font.BOLD, 18));
-            buttonList.add(numberButton);
-        }
-
-        buttonList.add(emptySpaceButton);
-        emptySpaceButton.setBackground(Color.RED);
-        emptySpaceButton.setBorder(null);
-
-        //slumpar siffrorna så det hamnar i slumpmässig ordning
-        Collections.shuffle(buttonList);
-
-        //adderar listan i GUI med fast storlek på knapparna
-        for (JButton button : buttonList) {
-            southPanel.add(button);
-            button.setPreferredSize(new Dimension(60, 60));
-            button.setFocusPainted(false);
-        }
-
-        southPanel.revalidate();
-        southPanel.repaint();
     }
 }
