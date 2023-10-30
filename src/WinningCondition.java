@@ -3,6 +3,9 @@ import java.awt.*;
 
 public class WinningCondition {
 
+    JLabel gameStatusLabel;
+    String statusGameOn = "Status: You won!";
+
     public boolean isGameWon(JPanel panel) {
         for (int i = 0; i <= panel.getComponentCount() - 2; i++) {
             JButton button = (JButton) panel.getComponent(i);

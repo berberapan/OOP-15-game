@@ -10,13 +10,11 @@ public class GameUI extends JFrame{
     JPanel southPanel = new JPanel();
     JLabel gameStatusLabel = new JLabel("Welcome");
     JButton newGameButton = new JButton("New Game");
-
     ArrayList<JButton> buttonList = new ArrayList<>();
-
     JButton numberButton = new JButton();
     JButton emptySpaceButton = new JButton();
-
     NewButtonShuffle nbs = new NewButtonShuffle(southPanel, gameStatusLabel);
+    int squareValue = 4;
 
     GameUI() {
 
@@ -33,11 +31,8 @@ public class GameUI extends JFrame{
 
         northPanel.add(newGameButton);
 
-        int squareValue = 4;
-
         southPanel.setLayout(new GridLayout(squareValue,squareValue));
         southPanel.setBackground(Color.red);
-
 
         //lägger in siffrorna i ArrayList med siffror från 1-15
         for (int i = 1; i <= (squareValue*squareValue)-1; i++) {
