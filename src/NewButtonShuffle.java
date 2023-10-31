@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class NewButtonShuffle implements ActionListener {
-    private GameUI ui;
+    private final GameUI ui;
 
     public NewButtonShuffle (GameUI ui) {
         this.ui = ui;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ButtonCreation bc = new ButtonCreation(ui.squareValue);
+        ButtonCreation bc = new ButtonCreation(ui.getSquareValue());
         ButtonPosition index = new ButtonPosition();
         ui.gameStatusLabel.setText(ui.statusGameOn);
         ui.gameStatusLabel.setForeground(Color.WHITE);
@@ -26,6 +26,5 @@ public class NewButtonShuffle implements ActionListener {
         JButton newEmptyButton = (JButton) ui.southPanel.getComponent(index.emptyIndex(ui.southPanel));
         ui.addActionToButtons(ui.southPanel, newEmptyButton);
     }
-
 }
 

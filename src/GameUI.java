@@ -11,7 +11,7 @@ public class GameUI extends JFrame{
     JLabel gameStatusLabel = new JLabel("Welcome");
     JButton newGameButton = new JButton("New Game");
     String statusGameOn = "Status: Game on";
-    int squareValue = 4;
+    private int squareValue = 4;
 
     GameUI() {
         gameStatusLabel.setForeground(Color.WHITE);
@@ -68,5 +68,9 @@ public class GameUI extends JFrame{
                     if (win.isGameWon(southPanel, gameStatusLabel)) {
                         win.displayWinMessage();}}});
         }
+    }
+
+    public int getSquareValue() {
+        return squareValue;
     }
 }
