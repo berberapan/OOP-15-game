@@ -10,12 +10,13 @@ public class WinningCondition {
                 return false;
             }
         }
-        gameStatus.setText("Winner");
-        gameStatus.setForeground(Color.YELLOW);
+        gameStatus.setText("Congratulations!");
+        gameStatus.setForeground(Color.WHITE);
+        gameStatus.setHorizontalAlignment(SwingConstants.LEFT);
         return true;
     }
     public void displayWinMessage() {
-        JLabel label = new JLabel("\nYou won!\n", SwingConstants.CENTER);
+        JLabel label = new JLabel("\nWinner, winner, chicken dinner!\n", SwingConstants.CENTER);
         label.setFont(new Font("Verdana", Font.BOLD, 18));
         JOptionPane.showMessageDialog(null, label, " ", JOptionPane.PLAIN_MESSAGE);
     }
