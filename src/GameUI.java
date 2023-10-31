@@ -11,7 +11,7 @@ public class GameUI extends JFrame{
     JLabel gameStatusLabel = new JLabel("Welcome");
     JButton newGameButton = new JButton("New Game");
     String statusGameOn = "Status: Game on";
-    private int squareValue = 4;
+    private final int squareValue = 4;
 
     GameUI() {
         gameStatusLabel.setForeground(Color.WHITE);
