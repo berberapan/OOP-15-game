@@ -5,51 +5,27 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class NewButtonShuffle extends JFrame implements ActionListener {
-    JPanel southPanel;
-    ArrayList<JButton> buttonList = new ArrayList<>();
-    JButton numberButton = new JButton();
-    JButton emptySpaceButton = new JButton();
-    JLabel gameStatusLabel;
-    String statusGameOn = "Status: Game on";
+public class NewButtonShuffle implements ActionListener {
+    private GameUI ui;
 
-    public NewButtonShuffle(JPanel southPanel, JLabel gameStatusLabel) {
-        this.southPanel = southPanel;
-        this.gameStatusLabel = gameStatusLabel;
+    public NewButtonShuffle (GameUI ui) {
+        this.ui = ui;
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        southPanel.removeAll();
-        southPanel.revalidate();
-        southPanel.repaint();
-
-        buttonList.clear();
-
-        southPanel.setLayout(new GridLayout(4, 4));
-
-        for (int i = 1; i <= 15; i++) {
-            numberButton = new JButton(String.valueOf(i));
-            numberButton.setBackground(Color.WHITE);
-            numberButton.setFont(new Font("Verdana", Font.BOLD, 18));
-            buttonList.add(numberButton);
-        }
-
-        buttonList.add(emptySpaceButton);
-        emptySpaceButton.setBackground(Color.RED);
-        emptySpaceButton.setBorder(null);
-
-        Collections.shuffle(buttonList);
-
-        for (JButton button : buttonList) {
-            southPanel.add(button);
-            button.setPreferredSize(new Dimension(60, 60));
-            button.setFocusPainted(false);
-        }
-
-        gameStatusLabel.setText(statusGameOn);
-
-        revalidate();
-        repaint();
+        ButtonCreation bc = new ButtonCreation(ui.squareValue);
+        ButtonPosition index = new ButtonPosition();
+        ui.gameStatusLabel.setText(ui.statusGameOn);
+        ui.gameStatusLabel.setForeground(Color.WHITE);
+        ui.southPanel.removeAll();
+        ui.southPanel.revalidate();
+        ui.southPanel.repaint();
+        ArrayList<JButton> newList = bc.getButtonList();
+        Collections.shuffle(newList);
+        ui.addButtonsToGui(newList, ui.southPanel);
+        JButton newEmptyButton = (JButton) ui.southPanel.getComponent(index.emptyIndex(ui.southPanel));
+        ui.addActionToButtons(ui.southPanel, newEmptyButton);
     }
+
 }
+

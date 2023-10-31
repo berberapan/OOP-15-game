@@ -3,13 +3,16 @@ import java.awt.*;
 
 public class WinningCondition {
 
-    public boolean isGameWon(JPanel panel) {
+    public boolean isGameWon(JPanel panel, JLabel gameStatus) {
         for (int i = 0; i <= panel.getComponentCount() - 2; i++) {
             JButton button = (JButton) panel.getComponent(i);
             if (!button.getText().equals(String.format("%d", i+1))) {
                 return false;
             }
-        } return true;
+        }
+        gameStatus.setText("Winner");
+        gameStatus.setForeground(Color.YELLOW);
+        return true;
     }
     public void displayWinMessage() {
         JLabel label = new JLabel("\nYou won!\n", SwingConstants.CENTER);
