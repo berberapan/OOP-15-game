@@ -5,7 +5,7 @@ public class EligibilityCheck {
         int aboveBelow =  Math.abs(buttonClickedIndex - emptyIndex);
         int toLeft = emptyIndex - buttonClickedIndex;
         int toRight = buttonClickedIndex - emptyIndex;
-        //Längst ut till höger
+        
         if (((emptyIndex+1) % squareValue == 0) && (aboveBelow == squareValue || toLeft == 1)) {
             return true;
         } else if ((emptyIndex % squareValue == 0) && (aboveBelow == squareValue || toRight == 1)) {
