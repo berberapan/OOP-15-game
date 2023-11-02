@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class NewButtonShuffle implements ActionListener {
     private final GameUI ui;
@@ -27,4 +26,3 @@ public class NewButtonShuffle implements ActionListener {
         ui.addActionToButtons(ui.southPanel, newEmptyButton);
     }
 }
-
