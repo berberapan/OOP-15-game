@@ -20,8 +20,8 @@ public class NewButtonShuffle implements ActionListener {
         ui.southPanel.removeAll();
         ui.southPanel.revalidate();
         ui.southPanel.repaint();
-        ArrayList<JButton> newList = bc.getButtonList();
-        Collections.shuffle(newList);
+        ArrayList<JButton> newList = bc.createUnshuffledButtons();
+        bc.shuffleButtons(newList);
         ui.addButtonsToGui(newList, ui.southPanel);
         JButton newEmptyButton = (JButton) ui.southPanel.getComponent(index.emptyIndex(ui.southPanel));
         ui.addActionToButtons(ui.southPanel, newEmptyButton);

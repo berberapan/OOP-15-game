@@ -1,40 +1,67 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ButtonCreation {
 
-    private int squareValue;
-    private ArrayList<JButton> buttonList = new ArrayList<>();
-
+    private final int square;
     public ButtonCreation(int square) {
-        JButton button = new JButton();
-        this.squareValue = square;
-        for (int i = 1; i <= (Math.pow(square,2)); i++) {
-            button = new JButton(String.valueOf(i));
+       this.square = square;
+    }
+    public ArrayList<JButton> createUnshuffledButtons() {
+        ArrayList<JButton> buttonList = new ArrayList<>();
+        for (int i = 1; i <= (Math.pow(this.square,2)); i++) {
+            JButton button = new JButton();
             button.setBackground(Color.WHITE);
             button.setFont(new Font("Verdana", Font.BOLD, 18));
-            if (i == Math.pow(square,2)) {
+            button.setText(String.valueOf(i));
+            if (i == Math.pow(this.square,2)) {
                 button.setText(" ");
                 button.setVisible(false);
             }
             buttonList.add(button);
         }
-    }
-
-    public int getSquareValue() {
-        return squareValue;
-    }
-
-    public void setSquareValue(int squareValue) {
-        this.squareValue = squareValue;
-    }
-
-    public ArrayList<JButton> getButtonList() {
         return buttonList;
     }
 
-    public void setButtonList(ArrayList<JButton> buttonList) {
-        this.buttonList = buttonList;
+    public void shuffleButtons(ArrayList<JButton> buttons) {
+        Collections.shuffle(buttons);
+        while(!solvableCombination(buttons)) {
+            Collections.shuffle(buttons);
+        }
+    }
+
+    // Logic found here: https://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/
+    public boolean solvableCombination(ArrayList<JButton> buttons) {
+        int emptyIndex = -1;
+        int inversion = 0;
+        boolean isEmptyInEvenRow = false;
+        boolean isSquareEven = this.square % 2 == 0;
+        for (int i = 0; i < buttons.size(); i++) {
+            if (buttons.get(i).getText().equals(" "))
+                emptyIndex = i;
+            for (int j = i; j < buttons.size(); j++) {
+                if (!buttons.get(j).getText().equals(" ") && !buttons.get(i).getText().equals(" ")) {
+                    int a = Integer.parseInt(buttons.get(j).getText());
+                    int b = Integer.parseInt(buttons.get(i).getText());
+                    if (b > a) {
+                        inversion++;
+                    }
+                }
+            }
+        }
+        for (int i = (square*square)-1; i >= 0; i -= 2*square) {
+            if (i >= emptyIndex && emptyIndex <= i - square) {
+                isEmptyInEvenRow = true;
+                break;
+            }
+        } if (isSquareEven) {
+            if (isEmptyInEvenRow && inversion % 2 != 0) {
+                return true;
+            } else return !isEmptyInEvenRow && inversion % 2 == 0;
+        } else {
+            return inversion % 2 == 0;
+        }
     }
 }

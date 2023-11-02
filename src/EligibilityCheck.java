@@ -1,16 +1,16 @@
 public class EligibilityCheck {
-
-
     public boolean isButtonEligible(int emptyIndex, int buttonClickedIndex, int squareValue) {
-        int aboveBelow = Math.abs(buttonClickedIndex - emptyIndex);
-        int toLeft = emptyIndex - buttonClickedIndex;
-        int toRight = buttonClickedIndex - emptyIndex;
+        boolean isEmptyInRightCol = (emptyIndex+1) % squareValue == 0;
+        boolean isEmptyInLeftCol = emptyIndex % squareValue == 0;
+        boolean isClickedAboveOrBelow = Math.abs(buttonClickedIndex - emptyIndex) == squareValue;
+        boolean isClickedToLeft = emptyIndex - buttonClickedIndex == 1;
+        boolean isClickedToRight = buttonClickedIndex - emptyIndex == 1;
 
-        if (((emptyIndex+1) % squareValue == 0) && (aboveBelow == squareValue || toLeft == 1)) {
+        if (isEmptyInRightCol && (isClickedAboveOrBelow || isClickedToLeft)) {
             return true;
-        } else if ((emptyIndex % squareValue == 0) && (aboveBelow == squareValue || toRight == 1)) {
+        } else if (isEmptyInLeftCol && (isClickedAboveOrBelow || isClickedToRight)) {
             return true;
-        } else return (((emptyIndex+1) % squareValue != 0) && (emptyIndex % squareValue != 0))
-                && (aboveBelow == squareValue || toLeft == 1 || toRight == 1);
+        } else return ((!isEmptyInRightCol && !isEmptyInLeftCol)
+                && (isClickedAboveOrBelow || isClickedToLeft || isClickedToRight));
     }
 }

@@ -30,7 +30,7 @@ public class GameUI extends JFrame{
 
         ButtonCreation bc = new ButtonCreation(this.squareValue);
 
-        addButtonsToGui(bc.getButtonList(), southPanel);
+        addButtonsToGui(bc.createUnshuffledButtons(), southPanel);
         ButtonPosition index = new ButtonPosition();
         JButton emptyButton = (JButton) southPanel.getComponent(index.emptyIndex(southPanel));
         addActionToButtons(southPanel, emptyButton);
@@ -43,6 +43,7 @@ public class GameUI extends JFrame{
         platform.setBackground(Color.RED);
         add(platform);
         pack();
+
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
