@@ -38,6 +38,7 @@ public class ButtonCreation {
         int inversion = 0;
         boolean isEmptyInEvenRow = false;
         boolean isSquareEven = this.square % 2 == 0;
+        boolean notSolvable = false;
         for (int i = 0; i < buttons.size(); i++) {
             if (buttons.get(i).getText().equals(" "))
                 emptyIndex = i;
@@ -59,9 +60,27 @@ public class ButtonCreation {
         } if (isSquareEven) {
             if (isEmptyInEvenRow && inversion % 2 != 0) {
                 return true;
-            } else return !isEmptyInEvenRow && inversion % 2 == 0;
+            } else if (!isEmptyInEvenRow && inversion % 2 == 0) {
+                return true;
+            } else {
+                if (!notSolvable) {
+                    JLabel notSolvableLabel = new JLabel("\nNot solvable!\n", SwingConstants.CENTER);
+                    notSolvableLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+                    JOptionPane.showMessageDialog(null, notSolvableLabel, " ", JOptionPane.PLAIN_MESSAGE);
+                }
+                return false;
+            }
         } else {
-            return inversion % 2 == 0;
+            if (inversion % 2 == 0) {
+                return true;
+            } else {
+                if (!notSolvable) {
+                    JLabel notSolvableLabel = new JLabel("\nNot solvable!\n", SwingConstants.CENTER);
+                    notSolvableLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+                    JOptionPane.showMessageDialog(null, notSolvableLabel, " ", JOptionPane.PLAIN_MESSAGE);
+                }
+                return false;
+            }
         }
     }
 }
