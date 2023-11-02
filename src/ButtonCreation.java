@@ -51,8 +51,8 @@ public class ButtonCreation {
                 }
             }
         }
-        for (int i = (square*square)-1; i >= 0; i -= 2*square) {
-            if (i >= emptyIndex && emptyIndex <= i - square) {
+        for (int i = (this.square*this.square)-1; i >= 0; i -= 2*this.square) {
+            if (i >= emptyIndex && emptyIndex <= i - this.square) {
                 isEmptyInEvenRow = true;
                 break;
             }
